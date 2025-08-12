@@ -212,6 +212,9 @@ vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { silent = true, noremap
 -- nvim-tree
 vim.keymap.set('n', '<leader>dd', ':NvimTreeToggle<CR>', { silent = true, noremap = true, desc = 'Toggle File Tree' })
 
+-- leader-w instead of ctrl-w
+vim.keymap.set('n', '<leader>w', '<C-w>')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
