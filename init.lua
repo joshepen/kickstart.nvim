@@ -212,8 +212,21 @@ vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { silent = true, noremap
 -- nvim-tree
 vim.keymap.set('n', '<leader>dd', ':NvimTreeToggle<CR>', { silent = true, noremap = true, desc = 'Toggle File Tree' })
 
--- leader-w instead of ctrl-w
-vim.keymap.set('n', '<leader>w', '<C-w>')
+-- New line (stay in normal mode)
+vim.keymap.set('n', '<leader>o', 'o<Esc>', { desc = 'Newline' })
+
+-- Move up or down more
+vim.keymap.set('n', '<A-j>', '5j', { desc = '5 lines down' })
+vim.keymap.set('n', '<A-k>', '5k', { desc = '5 lines up' })
+
+vim.keymap.set('i', '<A-j>', '<Down>', { desc = 'Insert mode, 1 line down' })
+vim.keymap.set('i', '<A-k>', '<Up>', { desc = 'Insert mode, 1 line up' })
+vim.keymap.set('i', '<A-h>', '<Left>', { desc = 'Insert mode, 1 line left' })
+vim.keymap.set('i', '<A-l>', '<Right>', { desc = 'Insert mode, 1 line right' })
+
+vim.keymap.set('i', '<A-w>', '<C-o>w', { desc = 'Insert mode, beginning of word' })
+vim.keymap.set('i', '<A-b>', '<C-o>b', { desc = 'Insert mode, backwards beginning of word' })
+vim.keymap.set('i', '<A-e>', '<C-o>e', { desc = 'Insert mode, end of word' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
