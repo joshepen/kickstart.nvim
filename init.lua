@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -210,7 +210,7 @@ vim.keymap.set('n', '<leader>dv', ':DiffviewOpen<CR>', { silent = true, noremap 
 vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { silent = true, noremap = true, desc = 'Close Diff View' })
 
 -- nvim-tree
-vim.keymap.set('n', '<leader>dd', ':NvimTreeToggle<CR>', { silent = true, noremap = true, desc = 'Toggle File Tree' })
+vim.keymap.set('n', '<leader>df', ':NvimTreeToggle<CR>', { silent = true, noremap = true, desc = 'Toggle File Tree' })
 
 -- New line (stay in normal mode)
 vim.keymap.set('n', '<leader>o', 'o<Esc>', { desc = 'Newline' })
@@ -227,6 +227,18 @@ vim.keymap.set('i', '<A-l>', '<Right>', { desc = 'Insert mode, 1 line right' })
 vim.keymap.set('i', '<A-w>', '<C-o>w', { desc = 'Insert mode, beginning of word' })
 vim.keymap.set('i', '<A-b>', '<C-o>b', { desc = 'Insert mode, backwards beginning of word' })
 vim.keymap.set('i', '<A-e>', '<C-o>e', { desc = 'Insert mode, end of word' })
+
+-- Insert date / time
+vim.keymap.set('n', '<leader>dd', ':InsertDate<CR>')
+vim.keymap.set('n', '<leader>dt', ':InsertDateTime<CR>')
+
+-- More escape keys?
+vim.keymap.set({ 'i', 'v', 'c' }, '<F1>', '<Esc>')
+vim.keymap.set({ 'i', 'v', 'c' }, '<F2>', '<Esc>')
+vim.keymap.set({ 'i', 'v', 'c' }, '<F3>', '<Esc>')
+
+-- MarkdownPreview
+vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -283,6 +295,36 @@ require('lazy').setup({
   'sindrets/diffview.nvim',
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+
+  {
+    'AntonVanAssche/date-time-inserter.nvim',
+    version = '*',
+    lazy = false,
+    opts = {
+      time_format = 24,
+      date_time_separator = ' ',
+    },
+  },
+
+  -- Markdown
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    build = 'npm install',
+    init = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end,
+    ft = { 'markdown' },
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -979,7 +1021,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
