@@ -137,6 +137,10 @@ vim.keymap.set({ 'i', 'v', 'c' }, '<F3>', '<Esc>')
 -- MarkdownPreview
 vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>')
 
+-- Idc I like saving with Ctrl S
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
