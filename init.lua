@@ -109,7 +109,7 @@ vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { silent = true, noremap
 vim.keymap.set('n', '<leader>df', ':NvimTreeToggle<CR>', { silent = true, noremap = true, desc = 'Toggle File Tree' })
 
 -- New line (stay in normal mode)
-vim.keymap.set('n', '<leader>o', 'o<Esc>', { desc = 'Newline' })
+vim.keymap.set('n', '<leader>o', 'o<Esc>', { desc = 'Newline', silent = true })
 
 -- Move up or down more
 vim.keymap.set('n', '<A-j>', '5j', { desc = '5 lines down' })
@@ -125,17 +125,12 @@ vim.keymap.set('i', '<A-b>', '<C-o>b', { desc = 'Insert mode, backwards beginnin
 vim.keymap.set('i', '<A-e>', '<C-o>e', { desc = 'Insert mode, end of word' })
 
 -- Insert date / time
-vim.keymap.set('n', '<leader>dd', ':InsertDate<CR>')
-vim.keymap.set('n', '<leader>dt', ':InsertDateTime<CR>')
-vim.keymap.set('i', '<A-d>', '<Esc>:InsertDate<CR>a')
-
--- More escape keys?
-vim.keymap.set({ 'i', 'v', 'c' }, '<F1>', '<Esc>')
-vim.keymap.set({ 'i', 'v', 'c' }, '<F2>', '<Esc>')
-vim.keymap.set({ 'i', 'v', 'c' }, '<F3>', '<Esc>')
+vim.keymap.set('n', '<leader>dd', ':InsertDate<CR>', { silent = true })
+vim.keymap.set('n', '<leader>dt', ':InsertDateTime<CR>', { silent = true })
+vim.keymap.set('i', '<A-d>', '<Esc>:InsertDate<CR>a', { silent = true })
 
 -- MarkdownPreview
-vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>')
+vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>', { silent = true })
 
 -- Idc I like saving with Ctrl S
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
