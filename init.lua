@@ -125,8 +125,8 @@ vim.keymap.set('i', '<A-b>', '<C-o>b', { desc = 'Insert mode, backwards beginnin
 vim.keymap.set('i', '<A-e>', '<C-o>e', { desc = 'Insert mode, end of word' })
 
 -- Insert date / time
-vim.keymap.set('n', '<leader>dd', ':InsertDate<CR>', { silent = true })
-vim.keymap.set('n', '<leader>dt', ':InsertDateTime<CR>', { silent = true })
+vim.keymap.set('n', '<leader>dd', 'i> <Esc>:InsertDate<CR>', { silent = true })
+vim.keymap.set('n', '<leader>dt', 'i> <Esc>:InsertDateTime<CR>', { silent = true })
 vim.keymap.set('i', '<A-d>', '<Esc>:InsertDate<CR>a', { silent = true })
 
 -- MarkdownPreview
@@ -542,6 +542,11 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'pylsp',
+        'black',
+        'autopep8',
+        'clangd',
+        'lua_ls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
