@@ -124,6 +124,9 @@ vim.keymap.set('i', '<A-w>', '<C-o>w', { desc = 'Insert mode, beginning of word'
 vim.keymap.set('i', '<A-b>', '<C-o>b', { desc = 'Insert mode, backwards beginning of word' })
 vim.keymap.set('i', '<A-e>', '<C-o>e', { desc = 'Insert mode, end of word' })
 
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Auto center on ctrl-d' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Auto center on ctrl-u' })
+
 -- Insert date / time
 vim.keymap.set('n', '<leader>dd', 'i> <Esc>:InsertDate<CR>', { silent = true })
 vim.keymap.set('n', '<leader>dt', 'i> <Esc>:InsertDateTime<CR>', { silent = true })
@@ -380,6 +383,56 @@ require('lazy').setup({
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
+
+      -- flash for code traversal
+      {
+        'folke/flash.nvim',
+        event = 'VeryLazy',
+        ---@type Flash.Config
+        opts = {},
+        keys = {
+          {
+            's',
+            mode = { 'n', 'x', 'o' },
+            function()
+              require('flash').jump()
+            end,
+            desc = 'Flash',
+          },
+          {
+            'S',
+            mode = { 'n', 'x', 'o' },
+            function()
+              require('flash').treesitter()
+            end,
+            desc = 'Flash Treesitter',
+          },
+          {
+            'r',
+            mode = 'o',
+            function()
+              require('flash').remote()
+            end,
+            desc = 'Remote Flash',
+          },
+          {
+            'R',
+            mode = { 'o', 'x' },
+            function()
+              require('flash').treesitter_search()
+            end,
+            desc = 'Treesitter Search',
+          },
+          {
+            '<c-s>',
+            mode = { 'c' },
+            function()
+              require('flash').toggle()
+            end,
+            desc = 'Toggle Flash Search',
+          },
+        },
+      },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
