@@ -47,7 +47,7 @@ vim.o.signcolumn = 'yes'
 vim.o.updatetime = 250
 
 -- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 100
 
 -- Configure how new splits should be opened
 vim.o.splitright = true
@@ -137,7 +137,7 @@ vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>', { silent = true }
 
 -- Idc I like saving with Ctrl S
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
