@@ -66,4 +66,8 @@ vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>', { silent = true }
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<C-q>', ':qa<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-q>', ':q<CR>', { noremap = true, silent = true })
+
+-- For my custom terminal run and build commands
+vim.keymap.set('n', '<leader>tc', ':TC<CR>', { desc = 'Run "compile" command' })
+vim.keymap.set('n', '<leader>tr', ':TR<CR>', { desc = 'Run "run" command' })
