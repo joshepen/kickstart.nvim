@@ -20,6 +20,7 @@ return {
     opts = {
       time_format = 24,
       date_time_separator = ' ',
+      date_format = '%m/%d/%Y',
     },
   },
   {
