@@ -62,9 +62,11 @@ vim.keymap.set('i', '<A-d>', '<Esc>:InsertDate<CR>a', { silent = true })
 -- MarkdownPreview
 vim.keymap.set('n', '<leader>m', ':MarkdownPreviewToggle<CR>', { silent = true })
 
+-- Easier to reach Esc key
+vim.keymap.set({ 'n', 'i' }, '<C-a>', '<Esc>', { noremap = true, silent = true })
+
 -- Idc I like saving with Ctrl S
-vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'i' }, '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<C-q>', ':q<CR>', { noremap = true, silent = true })
 
